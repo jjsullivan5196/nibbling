@@ -1,0 +1,7 @@
+{:paths ["src" "resources"]
+ :deps  {org.openjfx/javafx-controls {:mvn/version "21.0.12"}
+         org.openjfx/javafx-web      {:mvn/version "21.0.12"}
+         org.clojure/data.json       {:mvn/version "2.5.2"}
+         hiccup/hiccup               {:mvn/version "2.0.0"}}
+ :aliases
+ {:demo {:exec-fn nibbling.core/-main}}}
