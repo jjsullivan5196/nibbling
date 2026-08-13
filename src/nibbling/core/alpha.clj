@@ -1,4 +1,4 @@
-(ns nibbling.core
+(ns nibbling.core.alpha
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
             [hiccup2.core :as h]
