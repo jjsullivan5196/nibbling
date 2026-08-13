@@ -2,6 +2,7 @@
  :deps  {org.openjfx/javafx-controls {:mvn/version "21.0.12"}
          org.openjfx/javafx-web      {:mvn/version "21.0.12"}
          org.clojure/data.json       {:mvn/version "2.5.2"}
-         hiccup/hiccup               {:mvn/version "2.0.0"}}
+         hiccup/hiccup               {:mvn/version "2.0.0"}
+         garden/garden               {:mvn/version "1.3.10"}}
  :aliases
  {:demo {:exec-fn nibbling.core/-main}}}

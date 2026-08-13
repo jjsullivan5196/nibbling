@@ -1,7 +1,8 @@
 (ns nibbling.core
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
-            [hiccup2.core :as h])
+            [hiccup2.core :as h]
+            [garden.core])
   (:import [java.lang AutoCloseable]
            [java.util.concurrent LinkedBlockingQueue TimeUnit]
            [hiccup.util RawString]
@@ -33,19 +34,14 @@
   ([] (update-greet {} [:greet/name "Jeff Smith"]))
   ([old-state [n v]] (assoc old-state n v)))
 
-(def css "
-body { 
-  background: skyblue; 
-}
-
-section { 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
-}
-")
+(def css
+  (garden.core/css
+   '[:body {:background skyblue}
+     :section {:display         flex
+               :flex-direction  columnn
+               :justify-content center
+               :align-items     center
+               :height          "100vh"}]))
 
 (defn render-greet
   [{:greet/keys [name] :as _state}]
