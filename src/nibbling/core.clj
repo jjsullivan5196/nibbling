@@ -31,7 +31,7 @@
 
 (defn update-greet
   ([] (update-greet {} [:greet/name "Jeff Smith"]))
-  ([old-state [n v]] (assoc old-state (keyword n) v)))
+  ([old-state [n v]] (assoc old-state n v)))
 
 (def css "
 body { 
@@ -85,6 +85,12 @@ section {
   (str (slurp (io/resource "idiomorph/dist/idiomorph.min.js")) "\n\n"
        (slurp (io/resource "nibbling/bootstrap.js"))))
 
+(defn read-command
+  "Deserialize command JSON `s`."
+  [s]
+  (let [[n v] (json/read-str s)]
+    [(keyword n) v]))
+
 (defrecord WebContext [^Stage stage
                        ^WebEngine engine
                        ^LinkedBlockingQueue cmd-queue
@@ -101,7 +107,7 @@ section {
   (render [_]
     (morph-page! engine (render-fn @state)))
   (receive [_ cmd]
-    (future (.add cmd-queue (json/read-str cmd)))
+    (future (.add cmd-queue (read-command cmd)))
     nil)
   (command-loop [ctx]
     (while (not @stopped?)
