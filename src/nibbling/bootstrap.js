@@ -6,7 +6,7 @@ function morph_body(s) {
 
 function on_input(e) {
     /* Raise a command to the host from input event `e`.
-     * Generated command is of the form `["app/name", value]`.
+     * Generated command is of the form `["app.commands/*cmd-name*", value]`.
      */
     const t = e.target;
     const cmd = JSON.stringify([t.name, t.value]);
