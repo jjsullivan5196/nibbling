@@ -133,7 +133,7 @@
     context))
 
 (defn -main
-  [args]
+  [& args]
   (Platform/startup (constantly nil))
   (restart))
 
